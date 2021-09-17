@@ -1,5 +1,8 @@
 # Getting Started with Create React App
 
+Proyecto final correspondiente al modulo de ReactJS, de la carrera de Desarrollo Full Stack, de CODER HOUESE.
+Creado por Gonzales Liendo Facundo German.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
