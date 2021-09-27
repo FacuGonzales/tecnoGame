@@ -1,0 +1,26 @@
+.nav {
+  background-color: rgb(0, 48, 90);
+  color: #fff;
+  height: 100vh;
+  padding: 20px 40px 20px 15px;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  padding: 15px 0px;
+}
+
+a {
+  padding: 10px 10px;
+  color: #fff;
+  text-decoration: none;
+}
+
+a:hover {
+  background-color: #fff;
+  color: rgb(0, 48, 90);
+  transition: ease-in-out 0.3s;
+}
