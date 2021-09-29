@@ -1,7 +1,6 @@
 
 import './App.css';
 import { Component } from 'react';
-import { Icon } from 'semantic-ui-react'
 import NavBar from './components/navbar/NavBar';
 import HeaderComponent from './components/header/Header';
 import ItemListContainer from './components/itemListContainer/ItemListContainer';
