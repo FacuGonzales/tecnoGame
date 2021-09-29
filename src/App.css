@@ -39,10 +39,7 @@
 
 /* ESTILOS APP */
 
-.headerContainer {
-  margin-bottom: 85px;
-}
-
 .bodyContainer {
   display: flex;
+  margin-top: 110px;
 }
