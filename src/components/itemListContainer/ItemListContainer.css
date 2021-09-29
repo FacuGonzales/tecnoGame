@@ -1,0 +1,12 @@
+section {
+  padding: 35px;
+  width: 100%;
+}
+
+.titleItemList {
+  color: rgb(0, 48, 90);
+  font-weight: bold;
+  padding: 15px;
+  text-align: center !important;
+  text-transform: uppercase !important;
+}
