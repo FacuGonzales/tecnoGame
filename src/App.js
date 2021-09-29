@@ -1,12 +1,14 @@
 
 import './App.css';
 import { Component } from 'react';
+import { Icon } from 'semantic-ui-react'
 import NavBar from './components/navbar/NavBar';
 import HeaderComponent from './components/header/Header';
-import LandingComponent from './components/landing/Landing';
+import ItemListContainer from './components/itemListContainer/ItemListContainer';
 
 class App extends Component{
 
+  
   state = {
     consola: 'PLAYSTATION',
     precio: 10
@@ -25,18 +27,12 @@ class App extends Component{
   render(){
     return (
       <>
-        <div className="headerContainer">
           <HeaderComponent/>
-        </div>
 
         <div className="bodyContainer">
-          <div className="navBarContainer">
-            <NavBar/>
-          </div>
+          <NavBar/>
 
-          <div className="landingContainer">
-            <LandingComponent/>
-          </div>
+          <ItemListContainer greeting="Bienvenido! Disfruta las ofertas.."/>
         </div>
       </>
     );
