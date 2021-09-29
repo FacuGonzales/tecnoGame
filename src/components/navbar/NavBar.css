@@ -15,12 +15,11 @@ li {
 
 a {
   padding: 10px 10px;
-  color: #fff;
+  color: #fff !important;
   text-decoration: none;
 }
 
 a:hover {
-  background-color: #fff;
-  color: rgb(0, 48, 90);
+  border-bottom: 1px solid #fff;
   transition: ease-in-out 0.3s;
 }
