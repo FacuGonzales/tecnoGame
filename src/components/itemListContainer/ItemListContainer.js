@@ -1,8 +1,14 @@
 import './ItemListContainer.css';
 import { Divider, Icon} from 'semantic-ui-react'
+import ItemCount from './ItemCount/ItemCount';
+import React from 'react';
 
 
 const ItemListContainer = ({greeting}) => {
+
+    let stock = 10;
+    const [initial, setInitial] = React.useState(1);
+
 
     return (
         <section>
@@ -10,15 +16,17 @@ const ItemListContainer = ({greeting}) => {
 
             <Divider horizontal><Icon disabled name='cart plus'/></Divider>
             
-            <ul>
-                <li>Producto 1</li>
-                <li>Producto 2</li>
-                <li>Producto 3</li>
-                <li>Producto 4</li>
-                <li>Producto 5</li>
-                <li>Producto 6</li>
-                <li>Producto 7</li>
-            </ul>
+            <Icon name='minus circle' onClick = {() => {
+                console.log('resta')
+                setInitial( initial > 0 ? initial -1 : 0);
+            }}/>
+                
+            <ItemCount stock={stock} initial={initial}/>
+            
+            <Icon name='plus circle' onClick = {() => {
+                console.log('suma')
+                setInitial( initial < 10 ? initial + 1 : 10);
+            }}/>
         </section>
     )
 };
