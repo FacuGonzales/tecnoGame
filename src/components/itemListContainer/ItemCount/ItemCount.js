@@ -1,5 +1,5 @@
 
-import { Icon} from 'semantic-ui-react'
+import './ItemCount.css'
 
 
 const ItemCount = ({stock, initial}) => {
