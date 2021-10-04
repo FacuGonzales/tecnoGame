@@ -6,27 +6,11 @@ import HeaderComponent from './components/header/Header';
 import ItemListContainer from './components/itemListContainer/ItemListContainer';
 
 class App extends Component{
-
   
-  state = {
-    consola: 'PLAYSTATION',
-    precio: 10
-  }
-
-  cambiarConsola = ()=>{
-    console.log('object')
-    if(this.state.consola === 'PLAYSTATION'){
-      this.setState({consola: 'XBOX'})
-    }
-    else{
-      this.setState({consola: 'PLAYSTATION'})
-    }
-  }
-
   render(){
     return (
       <>
-          <HeaderComponent/>
+        <HeaderComponent/>
 
         <div className="bodyContainer">
           <NavBar/>
