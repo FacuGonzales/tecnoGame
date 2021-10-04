@@ -21,12 +21,12 @@ const ItemListContainer = ({greeting}) => {
                 setInitial( initial > 0 ? initial -1 : 0);
             }}/>
                 
-            <ItemCount stock={stock} initial={initial}/>
-            
             <Icon name='plus circle' onClick = {() => {
                 console.log('suma')
                 setInitial( initial < 10 ? initial + 1 : 10);
             }}/>
+            <ItemCount stock={stock} initial={initial}/>
+            
         </section>
     )
 };
