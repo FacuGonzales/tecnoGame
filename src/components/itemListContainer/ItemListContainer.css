@@ -10,3 +10,7 @@ section {
   text-align: center !important;
   text-transform: uppercase !important;
 }
+
+.icon {
+  font-size: 25px !important;
+}
