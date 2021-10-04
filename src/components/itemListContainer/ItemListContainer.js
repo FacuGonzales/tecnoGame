@@ -7,8 +7,8 @@ import React from 'react';
 const ItemListContainer = ({greeting}) => {
 
     let stock = 10;
-    const [initial, setInitial] = React.useState(1);
-
+    
+    const [ initial, setInitial] = React.useState(1);
 
     return (
         <section>
@@ -16,16 +16,7 @@ const ItemListContainer = ({greeting}) => {
 
             <Divider horizontal><Icon disabled name='cart plus'/></Divider>
             
-            <Icon name='minus circle' onClick = {() => {
-                console.log('resta')
-                setInitial( initial > 0 ? initial -1 : 0);
-            }}/>
-                
-            <Icon name='plus circle' onClick = {() => {
-                console.log('suma')
-                setInitial( initial < 10 ? initial + 1 : 10);
-            }}/>
-            <ItemCount stock={stock} initial={initial}/>
+            <ItemCount stock={stock} initial={initial} setInitial={setInitial}/>
             
         </section>
     )
