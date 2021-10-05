@@ -21,6 +21,10 @@ function ItemCount({stock, initial, setInitial}){
             </div>
 
             <p>Stock disponible: {stock}</p>
+
+            <button class="ui positive button" onClick = {() => {
+                console.log('CANTIDAD SELECCIONADA: ',initial)
+            }}>Imprimir resultado</button>
         </>
     )
 };
