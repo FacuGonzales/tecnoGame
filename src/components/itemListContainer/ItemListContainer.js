@@ -1,7 +1,9 @@
 import './ItemListContainer.css';
 import { Divider, Icon} from 'semantic-ui-react'
 import ItemCount from './ItemCount/ItemCount';
+import ItemList from './itemList/itemList';
 import React from 'react';
+
 
 
 const ItemListContainer = ({greeting}) => {
@@ -17,6 +19,8 @@ const ItemListContainer = ({greeting}) => {
             <Divider horizontal><Icon disabled name='cart plus'/></Divider>
             
             <ItemCount stock={stock} initial={initial} setInitial={setInitial}/>
+
+            <ItemList title="Listado de productos"/>
             
         </section>
     )
