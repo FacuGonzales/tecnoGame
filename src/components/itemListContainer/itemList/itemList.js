@@ -1,6 +1,7 @@
 import './ItemList.css';
 import React from 'react';
 import { Icon } from 'semantic-ui-react';
+import Item from '../Item/Item.js';
 
 let productos = [
     // {
@@ -46,7 +47,7 @@ const ItemList = ({title}) => {
     
     setTimeout(() => {
         setProdList(productos)
-    }, 5000);
+    }, 3000);
 
     return ( 
         <>
@@ -55,7 +56,8 @@ const ItemList = ({title}) => {
                 { 
                     prodList.map( p => 
                         <li>
-                            <img src={p.url_image}/>
+                            <Item img={p.url_image} nombre={p.nombre} precio={p.precio} stock={p.stock}/>
+                            {/* <img src={p.url_image}/>
                             <h3>{p.nombre}</h3>
                             <p>$ {p.precio}</p>
                          
@@ -74,7 +76,7 @@ const ItemList = ({title}) => {
                                 <button class="ui positive button">Comprar</button>
                             </div>
     
-                            <p>Stock Disponible: {p.stock}</p>
+                            <p>Stock Disponible: {p.stock}</p> */}
                         </li>
                     )
                 }

@@ -8,16 +8,13 @@ function ItemCount({stock, initial, setInitial}){
     
     return (
         <>
-            <div>
+            <div className="contadorContainer">
                 <Icon name='minus circle' onClick = {() => setInitial( initial > 0 ? initial -1 : 0)}/>
 
-               
-
-                <p>Cantidad seleccionada: {initial}</p>
+                <p>{initial}</p>
 
                 <Icon name='plus circle' onClick = {() => setInitial( initial < 10 ? initial + 1 : 10)}/>
 
-                
             </div>
 
             <p>Stock disponible: {stock}</p>
