@@ -57,26 +57,6 @@ const ItemList = ({title}) => {
                     prodList.map( p => 
                         <li>
                             <Item img={p.url_image} nombre={p.nombre} precio={p.precio} stock={p.stock}/>
-                            {/* <img src={p.url_image}/>
-                            <h3>{p.nombre}</h3>
-                            <p>$ {p.precio}</p>
-                         
-                            <div>
-                                <Icon name='minus circle' onClick = {() => setInitial( initial > 0 ? initial -1 : 0)}/>
-    
-                                <p>{initial}</p>
-    
-                                <Icon name='plus circle' onClick = {() => setInitial( initial < 10 ? initial + 1 : 10)}/>
-                            </div>
-    
-    
-                            <div class="ui buttons">
-                                <button class="ui button">Detalle</button>
-                                <div class="or"></div>
-                                <button class="ui positive button">Comprar</button>
-                            </div>
-    
-                            <p>Stock Disponible: {p.stock}</p> */}
                         </li>
                     )
                 }
