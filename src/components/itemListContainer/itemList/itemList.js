@@ -1,4 +1,4 @@
-import './itemList.css';
+import './ItemList.css';
 import React from 'react';
 import { Icon } from 'semantic-ui-react';
 

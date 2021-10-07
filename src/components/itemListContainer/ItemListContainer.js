@@ -1,7 +1,7 @@
 import './ItemListContainer.css';
 import { Divider, Icon} from 'semantic-ui-react'
 import ItemCount from './ItemCount/ItemCount';
-import ItemList from './itemList/itemList';
+import ItemList from './ItemList/ItemList';
 import React from 'react';
 
 
