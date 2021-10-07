@@ -41,8 +41,6 @@ let productos = [
 
 
 const ItemList = ({title}) => {
-    const [ initial, setInitial] = React.useState(1);
-
     const [ prodList, setProdList ] = React.useState([]);
     
     setTimeout(() => {
