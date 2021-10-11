@@ -1,7 +1,18 @@
-.imgProducto {
-  width: 100% !important;
+.card {
+  width: 85% !important;
+  text-align: center !important;
 }
 
-h3 {
-  text-align: center;
+.contentImg {
+  width: 100%;
+}
+
+.contentNombre {
+  margin: 10px 0px;
+}
+.contentPrecio {
+  margin: 10px 0px;
+}
+.contentStock {
+  margin: 10px 0px;
 }
