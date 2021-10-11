@@ -1,22 +1,8 @@
-/* .ulProductos {
-  display: grid;
-  grid-template-columns: 30% 30% 30%;
-  grid-template-rows: 195px 195px;
-}
-
-.ulProductos li {
-  width: 100%;
-}
-
-.ulProductos li img {
-  width: 60%;
-}
-
-.h4Titulo {
+.h2Titulo {
   text-align: center;
   font-size: 2rem;
   margin-top: 35px;
-} */
+}
 
 .itemsList {
   display: grid;

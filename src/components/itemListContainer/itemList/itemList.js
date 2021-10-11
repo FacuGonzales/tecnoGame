@@ -1,6 +1,5 @@
 import './ItemList.css';
 import React from 'react';
-// import { Icon } from 'semantic-ui-react';
 import Item from '../Item/Item.js';
 
 import ProductosData from '../../../json/productos.json';
@@ -22,34 +21,13 @@ const ItemList = ({title}) => {
 
     return (
         <>
-        <div className="itemsList">
-            { prodList.map((item)=> <Item item={item} key={item.id} /> )}
-        </div>
+            <h2 className="h2Titulo">{title}</h2>
 
-        {/* <div class="ui items">
-            { prodList.map((item)=> <ItemComponent item={item} key={item.id} /> )}
-           
-        </div> */}
-
+            <div className="itemsList">
+                { prodList.map((item)=> <Item item={item} key={item.id} /> )}
+            </div>
         </>
     )
-
-    // return ( 
-        
-    //     <>
-    //         <h4 className="h4Titulo">{title}</h4>
-    //         <ul className="ulProductos">
-    //             { 
-    //                 prodList.map( p => 
-    //                     <li>
-    //                         <Item img={p.url_image} nombre={p.nombre} precio={p.precio} stock={p.stock}/>
-    //                     </li>
-    //                 )
-    //             }
-    //         </ul>
-    //     </>
-    // )
-
 };
 
 export default ItemList;
