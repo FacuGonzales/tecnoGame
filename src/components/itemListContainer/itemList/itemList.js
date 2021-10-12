@@ -17,7 +17,7 @@ const ItemList = ({title}) => {
         respList.then((response) => {
             setProdList(response);
         });
-    }, [])
+    }, []);
 
     return (
         <>
