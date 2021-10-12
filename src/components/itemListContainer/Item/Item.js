@@ -27,9 +27,9 @@ const Item = ({item}) => {
 
                     <Card.Description className="contentPrecio">
                         <Button.Group>
-                            <Button><Icon name='shop' /></Button>
+                            <Button onClick={ () => setOpen(op => !op)}><Icon name='info' /></Button>
                             <Button.Or />
-                            <Button positive onClick={ () => setOpen(op => !op)}><Icon name='info' /></Button>
+                            <Button positive><Icon name='shop' /></Button>
                         </Button.Group>
                     </Card.Description>
                     
