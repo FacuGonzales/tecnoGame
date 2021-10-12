@@ -22,7 +22,7 @@ const Item = ({item}) => {
                     </Card.Description>
 
                     <Card.Description className="contentNombre">
-                        $ {item?.precio}
+                        $ {precio}
                     </Card.Description>
 
                     <Card.Description className="contentPrecio">
