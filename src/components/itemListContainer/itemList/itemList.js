@@ -1,17 +1,17 @@
 import './ItemList.css';
-import React from 'react';
-import Item from '../Item/Item.js';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
-import ProductosData from '../../../json/productos.json';
+import Item from '../Item/Item.js';
 import LoadingComponent from '../../LoadingContainer/LoadingComponent';
 
 const ItemList = ({title}) => {
-    const [ prodList, setProdList ] = React.useState([]);
+    const [ prodList, setProdList ] = useState([]);
 
-    React.useEffect(() => {
+    useEffect(() => {
         const respList = new Promise( (resolve) => {
             setTimeout (()=>{
-                resolve(ProductosData);
+                axios('https://tecnogame-1101-default-rtdb.firebaseio.com/productos/teclados.json').then(({data}) => resolve(data));
             },2000);
         })
 
