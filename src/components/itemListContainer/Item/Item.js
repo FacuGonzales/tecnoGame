@@ -6,10 +6,9 @@ import ModalContainer from '../../ModalContainer/ModalContainer';
 import ItemDetailContainer from '../../Details/ItemDetailContainer';
 
 const Item = ({item}) => {
-    const [ initial, setInitial] = useState(1);
     const [open, setOpen] = useState(false);
 
-    const {id, nombre, url_image, precio, stock} = item;
+    const {id, nombre, url_image, precio} = item;
 
     return (
         <>
@@ -33,9 +32,6 @@ const Item = ({item}) => {
                         </Button.Group>
                     </Card.Description>
                     
-                    <Card.Meta className="contentStock">
-                        <ItemCount stock={stock} initial={initial} setInitial={setInitial}/>
-                    </Card.Meta>
                 </Card.Content>
             </Card>
 
