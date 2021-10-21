@@ -1,0 +1,38 @@
+p {
+  font-size: 20px !important;
+  margin: 15px 0px !important;
+  text-align: center;
+}
+
+.contadorContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contadorContainer {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 30px;
+
+  &--infoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__stockContainer {
+      padding-right: 50px;
+    }
+
+    &__botonAgregarRestar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &--botonIcon {
+        font-size: 1.5rem !important;
+      }
+    }
+  }
+}
