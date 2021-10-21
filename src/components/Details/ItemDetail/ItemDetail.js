@@ -1,27 +1,20 @@
-// import { Button } from 'semantic-ui-react';
 import { useState } from 'react';
+import { Item } from 'semantic-ui-react'
 import ItemCount from '../../itemListContainer/ItemCount/ItemCount';
 import LoadingComponent from '../../LoadingContainer/LoadingComponent';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
-import CartContainer from '../../CartContainer/CartContainer';
 
 
-const ItemDetail = ({item, setOpen}) => {
+const ItemDetail = ({item}) => {
     const [ initial, setInitial] = useState(1);
+    const [ prodSelected, setProdSelected ] = useState({});
 
-    function addToCart(cantidad){
+    function addToCart(cantidad, prod){
 
         if(!item?.stock || item?.stock < cantidad) return console.log('No hay elementos', cantidad); 
 
-        return (
-            <Router>
-                <Switch>
-                    <Route path="/carrito" exact>
-                        <CartContainer/>
-                    </Route>
-                </Switch>
-            </Router>
-        )
+        setProdSelected(prod);
+
+        console.log(cantidad, prod);
 
     }
 
@@ -29,31 +22,22 @@ const ItemDetail = ({item, setOpen}) => {
         return <LoadingComponent></LoadingComponent>
     }else{
         return (
-            <div className="ui items">
-                <div className="item">
-                    <div className="image">
-                        <img src={item?.url_image}/>
-                    </div>
-    
-                    <div className="content">
-                        <div className="header">{item?.nombre}</div>
-    
-                        <div className="meta">${item?.precio}</div>
-    
-                        <div className="description">{item?.descripcion}</div>
-    
-                        <div className="meta">Stock disponible: {item?.stock}</div>
-    
-                        <div>
-                            <ItemCount stock={item?.stock} 
-                                        initial={initial}
-                                        setInitial={setInitial}
-                                        setOpen={setOpen}
-                                        onConfirm={addToCart}/>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <Item className="itemDetailContainer__itemDetail">
+                <Item.Image src={item?.url_image} className="itemDetailContainer__itemDetail--image"/>
+
+                <Item.Content className="itemDetailContainer__itemDetail--contentInfo">
+                    <Item.Header className="itemDetailContainer__itemDetail--contentInfo__titulo">{item?.nombre}</Item.Header>
+                    <Item.Meta className="itemDetailContainer__itemDetail--contentInfo__precio">USD {item?.precio} </Item.Meta>
+                    <Item.Description className="itemDetailContainer__itemDetail--contentInfo__descripcion">{item?.descripcion}</Item.Description>
+
+                    <Item.Extra className="itemDetailContainer__itemDetail--contentInfo__contador">
+                        <ItemCount prod={item} 
+                                   initial={initial}
+                                   setInitial={setInitial}
+                                   onConfirm={addToCart}/>
+                    </Item.Extra>
+                </Item.Content>
+            </Item>
         )
     }
 
