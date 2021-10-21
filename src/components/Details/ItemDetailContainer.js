@@ -1,27 +1,38 @@
-import { useState, useEffect} from 'react';
-import ProductosData from '../../json/productos.json';
+import { useState, useEffect } from 'react';
+import { useParams} from 'react-router-dom';
+import { Divider, Icon} from 'semantic-ui-react'
+import axios from 'axios';
+
 import ItemDetail from './ItemDetail/ItemDetail';
 
-const ItemDetailContainer = ({id, setOpen}) => {
+const ItemDetailContainer = () => {
 
     const [ item, setItem ] = useState([]);
+
+    let objFiltro = useParams();
+    let filtro = parseInt(objFiltro.id) || 0;
 
     useEffect(() => {
         const respuesta = new Promise( (resolve) => {
             setTimeout (()=>{
-                resolve(ProductosData);
+                axios('https://tecnogame-1101-default-rtdb.firebaseio.com/productos.json').then(({data}) => resolve(data));
             },2000);
         })
 
         respuesta.then((response) => {
-            const itemSelected = ProductosData.filter(p => p.id === id)
+            const itemSelected = response.filter(p => p.id === filtro)
             setItem(itemSelected);
         });
-    }, [id]);
+    }, []);
     
     return (
-        <section>
-            <ItemDetail item={item[0]} setOpen={setOpen}/>
+        <section className="itemDetailContainer">
+
+            <h1 className="itemDetailContainer__title">Detalle de Producto</h1>
+            
+            <Divider horizontal><Icon disabled name='cart plus'/></Divider>
+
+            <ItemDetail item={item[0]}/>
         </section>
     )
 };
