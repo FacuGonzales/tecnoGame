@@ -1,0 +1,45 @@
+.itemListContainer {
+  margin: 0px auto;
+  padding: 20px 0px;
+  width: 85%;
+
+  &--titleList {
+    color: rgb(0, 48, 90);
+    font-size: 2.5rem;
+    font-weight: bold;
+    padding: 15px;
+    text-align: center;
+    text-transform: uppercase !important;
+  }
+
+  &--itemList {
+    &__contenedorListado {
+      align-items: baseline; //flex-start;
+      display: grid;
+      grid-template-columns: 30% 30% 30%;
+      grid-template-rows: 195px 195px;
+      justify-content: center;
+
+      &__card {
+        width: 85% !important;
+        text-align: center !important;
+
+        &--contentImg {
+          width: 100%;
+        }
+
+        &--contentNombre {
+          font-size: 1.2rem;
+          font-weight: bold;
+          margin: 10px 0px;
+        }
+
+        &--contentPrecio {
+          font-size: 1.2rem;
+          font-weight: bold;
+          margin: 10px 0px;
+        }
+      }
+    }
+  }
+}
