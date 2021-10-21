@@ -1,28 +1,31 @@
 
-import './App.css';
-import { Component } from 'react';
+import "./styles/main.scss";
+import { BrowserRouter as Router,Route,Switch } from 'react-router-dom';
+
+// Importacion de componentes
 import NavBar from './components/navbar/NavBar';
-// import HeaderComponent from './components/header/Header';
 import ItemListContainer from './components/itemListContainer/ItemListContainer';
+import ItemList from './components/itemListContainer/ItemList/ItemList';
+import ItemDetailContainer from './components/Details/ItemDetailContainer';
+import CartContainer from './components/CartContainer/CartContainer';
 
-class App extends Component{
-  
-    render(){
-        return (
-            <>
-                <div className='cabecera'>
-                    <h1 className='title'>TecnoGame</h1>
-                </div>
-          
-                <div className="bodyContainer">
-                    <NavBar/>
-          
-                    <ItemListContainer greeting="Bienvenido! Disfruta las ofertas.."/>
-                </div>
-            </>
-        );
+function App() {
+    return (
+        <div className="App">
+            <Router>
 
-    }
+                <NavBar/>
+
+                <Switch>
+                    <Route exact component={ ItemListContainer } path="/" />
+                    <Route component={ ItemList } path="/categorias/:categoriaId" />
+                    <Route component={ ItemDetailContainer } path="/detalle/:id" />
+                    <Route component={ CartContainer } path="/carrito" />
+                </Switch>
+
+            </Router>
+        </div>
+    );
 }
-
+  
 export default App;
