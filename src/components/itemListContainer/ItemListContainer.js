@@ -1,26 +1,19 @@
-import './ItemListContainer.css';
-import { Divider, Icon} from 'semantic-ui-react'
-// import ItemCount from './ItemCount/ItemCount';
-import ItemList from './ItemList/ItemList';
 import React from 'react';
+import { Divider, Icon} from 'semantic-ui-react'
+
+import ItemList from './ItemList/ItemList';
 
 
 
-const ItemListContainer = ({greeting}) => {
-
-    // let stock = 10;
-    
-    // const [ initial, setInitial] = React.useState(1);
+const ItemListContainer = () => {
 
     return (
-        <section>
-            <h1 className="titleItemList">{greeting}</h1>
+        <section className="itemListContainer">
+            <h1 className="itemListContainer--titleList">Nuestras ofertas</h1>
 
             <Divider horizontal><Icon disabled name='cart plus'/></Divider>
             
-            {/* <ItemCount stock={stock} initial={initial} setInitial={setInitial}/> */}
-
-            <ItemList title="Listado de productos"/>
+            <ItemList/>
             
         </section>
     )
