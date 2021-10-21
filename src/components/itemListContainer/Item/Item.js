@@ -1,43 +1,38 @@
-import { useState } from 'react';
-import ItemCount from '../ItemCount/ItemCount';
-import './Item.css'
+import { Link } from 'react-router-dom';
 import { Card, Button, Image, Icon } from 'semantic-ui-react';
-import ModalContainer from '../../ModalContainer/ModalContainer';
-import ItemDetailContainer from '../../Details/ItemDetailContainer';
 
 const Item = ({item}) => {
-    const [open, setOpen] = useState(false);
-
     const {id, nombre, url_image, precio} = item;
 
     return (
         <>
-            <Card className="card">
-                <Image src={url_image} wrapped ui={false} className="contentImg"/>
+            <Card className="itemListContainer--itemList__contenedorListado__card">
+                <Image src={url_image} wrapped ui={false} className="itemListContainer--itemList__contenedorListado__card--contentImg"/>
                 <Card.Content>
 
-                    <Card.Description className="contentNombre">
+                    <Card.Description className="itemListContainer--itemList__contenedorListado__card--contentNombre">
                         {nombre}
                     </Card.Description>
 
-                    <Card.Description className="contentNombre">
+                    <Card.Description className="itemListContainer--itemList__contenedorListado__card--contentNombre">
                         $ {precio}
                     </Card.Description>
 
-                    <Card.Description className="contentPrecio">
+                    <Card.Description className="itemListContainer--itemList__contenedorListado__card--contentPrecio">
                         <Button.Group>
-                            <Button onClick={ () => setOpen(op => !op)}><Icon name='info' /></Button>
+                            <Link to={`/detalle/${id}`}>
+                                <Button ><Icon name='info' /></Button>
+                            </Link>
+
                             <Button.Or />
-                            <Button positive><Icon name='shop' /></Button>
+                            <Link to="/carrito">
+                                <Button positive><Icon name='shop' /></Button>
+                            </Link>
                         </Button.Group>
                     </Card.Description>
                     
                 </Card.Content>
             </Card>
-
-            <ModalContainer open={open} setOpen={setOpen}>
-                <ItemDetailContainer setOpen={setOpen} id={id}/>
-            </ModalContainer>
         </>
     )
 };
