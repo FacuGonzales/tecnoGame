@@ -5,7 +5,7 @@ export const CartContext = createContext();
 export const CartProvider = ( {children} ) => {
     const [ listadoItems, setListadoItem ] = useState([]);
 
-    function addItem(item, cantidad) {
+    const addItem = (item, cantidad) => {
         let index = listadoItems.findIndex(i => i.item.id === item.id);
 
         if (index === -1 && isInCart === false) {
@@ -20,13 +20,13 @@ export const CartProvider = ( {children} ) => {
         }
     }
 
-    function removeItem(id){
+    const removeItem = (id) => {
         let index = listadoItems.findIndex(i => i.item.id === id);
 
         if (index !== -1 && isInCart === true) listadoItems.splice(index, 1)
     }
 
-    function isInCart(id) {
+    const isInCart = (id) => {
         let itemExiste= false;
         const item = listadoItems.filter(i => i.item.id === id);
 
@@ -35,7 +35,7 @@ export const CartProvider = ( {children} ) => {
         return itemExiste;
     }
 
-    function clear() {
+    const clear = () =>{
         setListadoItem([])
     }
 
@@ -45,3 +45,5 @@ export const CartProvider = ( {children} ) => {
         </div>
     )
 }
+
+export default CartProvider;
