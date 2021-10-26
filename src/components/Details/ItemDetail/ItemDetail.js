@@ -1,21 +1,25 @@
-import { useState } from 'react';
-import { Item } from 'semantic-ui-react'
+import { useState, useContext } from 'react';
+import { Item, Button } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import { CartContext } from '../../Context/CartContext';
 import ItemCount from '../../itemListContainer/ItemCount/ItemCount';
 import LoadingComponent from '../../LoadingContainer/LoadingComponent';
 
 
 const ItemDetail = ({item}) => {
-    const [ initial, setInitial] = useState(1);
-    const [ prodSelected, setProdSelected ] = useState({});
+    // const [ initial, setInitial] = useState(1);
+    // const [ prodSelected, setProdSelected ] = useState({});
 
-    function addToCart(cantidad, prod){
+    const [ cantidad, setCantidad] = useState(0);
+    const [ confirmar, setConfirmar ] = useState(false);
+    const cartContext  = useContext(CartContext);
+    
+    function addToCart(cant) {
+        setCantidad(cant);
 
-        if(!item?.stock || item?.stock < cantidad) return console.log('No hay elementos', cantidad); 
+        setConfirmar(true);
 
-        setProdSelected(prod);
-
-        console.log(cantidad, prod);
-
+        if (cantidad > 0) cartContext.addItem(item, cantidad);
     }
 
     if(!item){
@@ -31,10 +35,14 @@ const ItemDetail = ({item}) => {
                     <Item.Description className="itemDetailContainer__itemDetail--contentInfo__descripcion">{item?.descripcion}</Item.Description>
 
                     <Item.Extra className="itemDetailContainer__itemDetail--contentInfo__contador">
-                        <ItemCount prod={item} 
-                                   initial={initial}
-                                   setInitial={setInitial}
-                                   onConfirm={addToCart}/>
+                        {   confirmar? 
+                                <Link to="/cart">
+                                    <Button positive className="contadorContainer--botonesExtra__contenedorBotones--btnAdd">Confirmar Compra</Button>
+                                </Link> 
+                            :
+                                <ItemCount stock={item.stock} initial="1" onClick={ (cantidad) => addToCart(cantidad)}/>
+                        }
+
                     </Item.Extra>
                 </Item.Content>
             </Item>
