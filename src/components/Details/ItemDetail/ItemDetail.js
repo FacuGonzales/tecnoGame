@@ -12,14 +12,14 @@ const ItemDetail = ({item}) => {
 
     const [ cantidad, setCantidad] = useState(0);
     const [ confirmar, setConfirmar ] = useState(false);
-    const cartContext  = useContext(CartContext);
+    const { addItem }  = useContext(CartContext);
     
     function addToCart(cant) {
         setCantidad(cant);
 
         setConfirmar(true);
 
-        if (cantidad > 0) cartContext.addItem(item, cantidad);
+        if (cant > 0) addItem(item, cant);
     }
 
     if(!item){
