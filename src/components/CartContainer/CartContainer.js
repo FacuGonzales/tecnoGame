@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import { Link } from 'react-router-dom'
-import { Button } from 'semantic-ui-react'
+import { Button, Icon } from 'semantic-ui-react'
 import { CartContext } from '../Context/CartContext';
 import CartItem from './CartItem/CartItem';
 
@@ -24,13 +24,21 @@ const CartContainer = () => {
                 :
                 
                 <div>
-                    <h2>productos{ totalItems() }</h2>
-                    
                     <CartItem/>
 
-                    <p>Total: USD { totalPrice() }</p>
+                    <p>Total de Items{ totalItems() }</p>
 
-                    <Button onClick={ () => clear() }>Vacíar Carrito</Button>
+                    <p>TOTAL A PAGAR: USD { totalPrice() }</p>
+                   
+                    <Button.Group>
+                        <Button onClick={ () => clear() }><Icon name='delete' />Vacíar Carrito</Button>
+
+                        <Button.Or />
+
+                        <Link to="/">
+                            <Button positive><Icon name='shop'/>Continuar Comprando</Button>
+                        </Link>
+                    </Button.Group>
                     
                 </div>
             }
