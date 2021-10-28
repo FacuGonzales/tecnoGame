@@ -4,12 +4,14 @@ export const CartContext = createContext();
 
 export const CartProvider = ( {children} ) => {
     const [ listadoItems, setListadoItem ] = useState([]);
+    const [ cantidad, setCantidad ] = useState(0);
+    const [ total, setTotal ] = useState(0)
 
-    const addItem = (item, cantidad) => {
-        let index = listadoItems.findIndex(i => i.item.id === item.id);
+    const addItem = (i, cantidad) => {
+        let index = listadoItems.findIndex(i => i.item.id === i.id);
 
-        if (index === -1 && isInCart === false) {
-            const listaNuevoItems = [...listadoItems,{item:item,cantidad}]
+        if (index === -1 ) {
+            const listaNuevoItems = [...listadoItems,{item:i,cantidad}]
             setListadoItem(listaNuevoItems);
         }
         else{
@@ -39,9 +41,30 @@ export const CartProvider = ( {children} ) => {
         setListadoItem([])
     }
 
+    const totalItems = () => {
+        let cantidad = 0;
+        listadoItems.forEach(i => cantidad += i.cantidad)
+        setCantidad(cantidad)
+        return cantidad
+    }
+
+    const totalPrice = () => {
+        let suma = 0;
+        listadoItems.forEach(i => suma += i.item.precio * i.cantidad)
+        setTotal(suma)
+        return suma
+    }
+
     return (
         <div>
-            <CartContext.Provider value={{ addItem:addItem, removeItem:removeItem, clear:clear }}> {children} </CartContext.Provider>
+            <CartContext.Provider value={{ addItem:addItem, 
+                                           removeItem:removeItem, 
+                                           clear:clear,
+                                           totalItems:totalItems,
+                                           totalPrice:totalPrice,
+                                           listadoItems:listadoItems,
+                                           cantidad:cantidad,
+                                           total:total,}}> {children} </CartContext.Provider>
         </div>
     )
 }
