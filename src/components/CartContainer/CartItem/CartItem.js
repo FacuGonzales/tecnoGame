@@ -16,7 +16,7 @@ const CartItem = () => {
         
                             <List.Item>
                                 <List.Content floated='right'>
-                                    <Button onClick={()=>{removeItem(i)}}><Icon name='trash'/></Button>
+                                    <Button onClick={()=>{removeItem(i.item.id)}}><Icon name='trash'/></Button>
                                 </List.Content>
 
                                 <Image avatar src={i.item.url_image}/>
