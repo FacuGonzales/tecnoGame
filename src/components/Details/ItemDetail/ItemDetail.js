@@ -36,7 +36,7 @@ const ItemDetail = ({item}) => {
 
                     <Item.Extra className="itemDetailContainer__itemDetail--contentInfo__contador">
                         {   confirmar? 
-                                <Link to="/cart">
+                                <Link to="/carrito">
                                     <Button positive className="contadorContainer--botonesExtra__contenedorBotones--btnAdd">Confirmar Compra</Button>
                                 </Link> 
                             :
