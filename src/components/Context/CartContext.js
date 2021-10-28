@@ -23,9 +23,8 @@ export const CartProvider = ( {children} ) => {
     }
 
     const removeItem = (id) => {
-        let index = listadoItems.findIndex(i => i.item.id === id);
-
-        if (index !== -1 && isInCart === true) listadoItems.splice(index, 1)
+        const listaNueva = listadoItems.filter(i=> i.item.id !== id)
+        setListadoItem(listaNueva)
     }
 
     const isInCart = (id) => {
@@ -50,7 +49,7 @@ export const CartProvider = ( {children} ) => {
 
     const totalPrice = () => {
         let suma = 0;
-        listadoItems.forEach(i => suma += i.item.precio * i.cantidad)
+        listadoItems.forEach(i => suma += parseInt(i.item.precio) * i.cantidad)
         setTotal(suma)
         return suma
     }
