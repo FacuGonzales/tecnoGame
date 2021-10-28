@@ -1,8 +1,19 @@
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Button, Image, Icon } from 'semantic-ui-react';
+import { CartContext } from '../../Context/CartContext';
 
 const Item = ({item}) => {
     const {id, nombre, url_image, precio} = item;
+
+    const [ cantidad, setCantidad] = useState(0);
+    const { addItem }  = useContext(CartContext);
+
+    function addToCart(cant) {
+        setCantidad(cant);
+
+        if (cant > 0) addItem(item, cant);
+    }
 
     return (
         <>
@@ -26,7 +37,7 @@ const Item = ({item}) => {
 
                             <Button.Or />
                             <Link to="/carrito">
-                                <Button positive><Icon name='shop' /></Button>
+                                <Button positive onClick={ () => addToCart(1)}><Icon name='shop' /></Button>
                             </Link>
                         </Button.Group>
                     </Card.Description>
