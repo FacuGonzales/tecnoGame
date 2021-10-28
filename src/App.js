@@ -8,21 +8,22 @@ import ItemListContainer from './components/itemListContainer/ItemListContainer'
 import ItemList from './components/itemListContainer/ItemList/ItemList';
 import ItemDetailContainer from './components/Details/ItemDetailContainer';
 import CartContainer from './components/CartContainer/CartContainer';
+import CartProvider from "./components/Context/CartContext";
 
 function App() {
     return (
         <div className="App">
             <Router>
+                <CartProvider>
+                    <NavBar/>
 
-                <NavBar/>
-
-                <Switch>
-                    <Route exact component={ ItemListContainer } path="/" />
-                    <Route component={ ItemList } path="/categorias/:categoriaId" />
-                    <Route component={ ItemDetailContainer } path="/detalle/:id" />
-                    <Route component={ CartContainer } path="/carrito" />
-                </Switch>
-
+                    <Switch>
+                        <Route exact component={ ItemListContainer } path="/" />
+                        <Route component={ ItemList } path="/categorias/:categoriaId" />
+                        <Route component={ ItemDetailContainer } path="/detalle/:id" />
+                        <Route component={ CartContainer } path="/carrito" />
+                    </Switch>
+                </CartProvider>
             </Router>
         </div>
     );
