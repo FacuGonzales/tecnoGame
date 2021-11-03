@@ -1,71 +1,103 @@
 import { createContext, useState} from 'react'
+import { Alert, Snackbar } from "@mui/material";
 
 export const CartContext = createContext();
 
 export const CartProvider = ( {children} ) => {
-    const [ listadoItems, setListadoItem ] = useState([]);
+    const [alertMessage, setAlertMessage] = useState({
+        text: '',
+        severity: 'success',
+        open: false
+    });
+    const [items, setItems] = useState([]);
     const [ cantidad, setCantidad ] = useState(0);
     const [ total, setTotal ] = useState(0)
 
-    const addItem = (i, cantidad) => {
-        let index = listadoItems.findIndex(i => i.item.id === i.id);
+    const addItem = (item, cantidad) => {
 
-        if (index === -1 ) {
-            const listaNuevoItems = [...listadoItems,{item:i,cantidad}]
-            setListadoItem(listaNuevoItems);
+        if (isInCart(item.id)) {
+
+            setAlertMessage({
+                text: 'El producto ya se encuentra en tu carrito',
+                severity: 'warning',
+                open: true
+            });
+            return;
         }
-        else{
-            const nuevaCantidad = listadoItems[index].cantidad + cantidad;
-            const listaEdit = listadoItems.filter(i => i.item.id !== listadoItems[index].item.id)
-            const listaFinal = [...listaEdit, { item: listadoItems[index].item, cantidad: nuevaCantidad}]
-            setListadoItem(listaFinal)
-        }
+
+        setAlertMessage({
+            text: `Se agrego ${cantidad} productos correctamente a tu carrito`,
+            severity: 'success',
+            open: true
+        });
+
+        setItems([...items, { cantidad: cantidad, ...item }]);
     }
 
-    const removeItem = (id) => {
-        const listaNueva = listadoItems.filter(i=> i.item.id !== id)
-        setListadoItem(listaNueva)
+    
+    const removeItem = (itemId) => {
+
+        setItems(items.filter(item => item.id !== itemId));
+
+        setAlertMessage({
+            text: `Se elimino el producto de tu carrito`,
+            severity: 'success',
+            open: true
+        });
+    }
+    
+    const isInCart = (itemId) => {
+        return !!items.find(item => item.id === itemId);
     }
 
-    const isInCart = (id) => {
-        let itemExiste= false;
-        const item = listadoItems.filter(i => i.item.id === id);
+    const clear = () => {
 
-        if ( item.length ) itemExiste = true;
-        
-        return itemExiste;
-    }
+        setItems([]);
 
-    const clear = () =>{
-        setListadoItem([])
+        setAlertMessage({
+            text: `Se vacío correctamente tu carrito`,
+            severity: 'success',
+            open: true
+        });
     }
 
     const totalItems = () => {
         let cantidad = 0;
-        listadoItems.forEach(i => cantidad += i.cantidad)
+        items.forEach(i => cantidad += i.cantidad)
         setCantidad(cantidad)
         return cantidad
     }
 
     const totalPrice = () => {
         let suma = 0;
-        listadoItems.forEach(i => suma += parseInt(i.item.precio) * i.cantidad)
+        items.forEach(i => suma += parseInt(i.precio) * i.cantidad)
         setTotal(suma)
         return suma
     }
 
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setAlertMessage({
+            text: '',
+            severity: 'success',
+            open: false
+        });
+    };
+    
     return (
-        <div>
-            <CartContext.Provider value={{ addItem:addItem, 
-                                           removeItem:removeItem, 
-                                           clear:clear,
-                                           totalItems:totalItems,
-                                           totalPrice:totalPrice,
-                                           listadoItems:listadoItems,
-                                           cantidad:cantidad,
-                                           total:total,}}> {children} </CartContext.Provider>
-        </div>
-    )
+        <CartContext.Provider value={{ addItem, removeItem, clear, isInCart, totalItems, totalPrice, items, cantidad:cantidad, total:total, }}>
+            {children}
+
+            <Snackbar open={alertMessage.open} autoHideDuration={3000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity={alertMessage.severity} sx={{ width: '100%' }}>
+                    {alertMessage.text}
+                </Alert>
+            </Snackbar>
+        </CartContext.Provider>
+    );
 }
 
 export default CartProvider;
