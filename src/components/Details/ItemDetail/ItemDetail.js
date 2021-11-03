@@ -7,16 +7,10 @@ import LoadingComponent from '../../LoadingContainer/LoadingComponent';
 
 
 const ItemDetail = ({item}) => {
-    // const [ initial, setInitial] = useState(1);
-    // const [ prodSelected, setProdSelected ] = useState({});
-
-    const [ cantidad, setCantidad] = useState(0);
     const [ confirmar, setConfirmar ] = useState(false);
     const { addItem }  = useContext(CartContext);
     
     function addToCart(cant) {
-        setCantidad(cant);
-
         setConfirmar(true);
 
         if (cant > 0) addItem(item, cant);
