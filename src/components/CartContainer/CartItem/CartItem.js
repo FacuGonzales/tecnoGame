@@ -4,24 +4,24 @@ import { Button, Image, List, Icon } from 'semantic-ui-react'
 
 const CartItem = () => {
 
-    const {listadoItems,removeItem} = useContext(CartContext);
+    const {items,removeItem} = useContext(CartContext);
     return (
         
         <div>
             {
-                listadoItems.map(i=>{
+                items.map(i=>{
                     return(
 
                         <List divided verticalAlign='middle'>
         
                             <List.Item>
                                 <List.Content floated='right'>
-                                    <Button onClick={()=>{removeItem(i.item.id)}}><Icon name='trash'/></Button>
+                                    <Button onClick={()=>{removeItem(i.id)}}><Icon name='trash'/></Button>
                                 </List.Content>
 
-                                <Image avatar src={i.item.url_image}/>
+                                <Image avatar src={i.url_image}/>
 
-                                <List.Content>{i.item.nombre} - USD {i.item.precio} - Cantidad: {i.cantidad}</List.Content>
+                                <List.Content>{i.nombre} - USD {i.precio} - Cantidad: {i.cantidad}</List.Content>
                             </List.Item>
                         </List>
                     )

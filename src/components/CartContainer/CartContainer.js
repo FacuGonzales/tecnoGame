@@ -5,13 +5,13 @@ import { CartContext } from '../Context/CartContext';
 import CartItem from './CartItem/CartItem';
 
 const CartContainer = () => {
-    const { listadoItems, totalItems, totalPrice, clear} = useContext(CartContext)
+    const { items, totalItems, totalPrice, clear} = useContext(CartContext)
 
     return (
         <div>
             <h2 className="titulo">Tu carrito </h2>
             {
-                listadoItems.length === 0 ? 
+                items.length === 0 ? 
                     <div>
                         <h2>No hay productos agregados en el carrito</h2>
 
