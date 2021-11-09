@@ -1,9 +1,10 @@
 
 import { useState, useEffect } from 'react';
 import { useParams} from 'react-router-dom';
-import axios from 'axios';
 import { Divider, Icon} from 'semantic-ui-react'
-
+import { collection, getDocs, query, where} from "firebase/firestore";
+import { db } from "../../../utils/db"
+//router
 import Item from '../Item/Item.js';
 import LoadingComponent from '../../LoadingContainer/LoadingComponent';
 
@@ -16,7 +17,7 @@ const ItemList = () => {
     let existeFiltro = objFiltro.categoriaId ? true : false;
     
     let categoriaVisible;
-
+    
     switch (filtro) {
         case 1:   
             categoriaVisible = 'Celulares';
@@ -35,16 +36,28 @@ const ItemList = () => {
     }
 
     useEffect(() => {
-        const respList = new Promise( (resolve) => {
-            setTimeout (()=>{
-                axios('https://tecnogame-1101-default-rtdb.firebaseio.com/productos.json').then(({data}) => resolve(data));
-            },2000);
-        })
+        const getData = async () => {
+            let resultadoDB;
 
-        respList.then((response) => {
-            setProdList(response);
-        });
-    }, []);
+            if( filtro !== 0) {
+                resultadoDB = query(collection(db, "productos"), where("categoria", "==", filtro));
+            } else{
+                resultadoDB = query(collection(db, "productos"));
+             }   
+
+             const querySnapshot = await getDocs(resultadoDB);
+             
+             const prod = querySnapshot.docs.map((doc) => {
+                return { ...doc.data(), id: doc.id };
+            
+            })
+
+            setProdList(prod)
+        };
+
+        getData();
+
+    }, [filtro]);
 
     if(!prodList.length){
         return <LoadingComponent></LoadingComponent>
@@ -62,12 +75,9 @@ const ItemList = () => {
 
                             <div className="itemListContainer--itemList__contenedorListado">
                                 {
-                                
-                                    prodList.filter(p => filtro === 0 || filtro === p.categoria).map(
-                                        item => {
-                                            return(<Item item={item}/>)
-                                        }
-                                    )
+                                    prodList.map(p=>{
+                                        return(<Item item={p}/>)
+                                    })
                                 }
                             </div>
                         </div>
@@ -76,22 +86,14 @@ const ItemList = () => {
                     <div className="itemListContainer--itemList">
                         <div className="itemListContainer--itemList__contenedorListado">
                             {
-                            
-                                prodList.filter(p => filtro === 0 || filtro === p.categoria).map(
-                                    item => {
-                                        return(<Item item={item}/>)
-                                    }
-                                )
+                                prodList.map(p=>{
+                                    return(<Item item={p}/>)
+                                })
                             }
                         </div>
                     </div>
                 }
             </div>
-
-
-
-
-           
         )
     }
 };
