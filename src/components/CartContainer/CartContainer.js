@@ -48,6 +48,13 @@ const CartContainer = () => {
                             </Button>
                         </Link>
                     </Button.Group>
+
+
+                    <div className="cartContainer--comprasContainer__buttonFormContainer">
+                        <Link to="/confirmarCompra">
+                            <Button positive className="cartContainer--comprasContainer__buttonFormContainer--formButton">Confirmar Compra</Button>
+                        </Link>
+                    </div>
                     
                 </div>
             }
