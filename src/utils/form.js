@@ -25,7 +25,7 @@ const FormularioCompra = () => {
                 email:inputEmail,
                 items:[...items],
                 total:totalPrice(),
-                // date: db.firestore.Timestamp.fromDate(new Date()),
+                date: db.firestore.Timestamp.fromDate(new Date()),
             })
         }
         guardarCompra();     
