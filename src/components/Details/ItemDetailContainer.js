@@ -1,29 +1,32 @@
 import { useState, useEffect } from 'react';
-import { useParams} from 'react-router-dom';
 import { Divider, Icon} from 'semantic-ui-react'
-import axios from 'axios';
+import { getDoc,doc } from "firebase/firestore";
+import { db } from "../../utils/db"
 
 import ItemDetail from './ItemDetail/ItemDetail';
 
-const ItemDetailContainer = () => {
+const ItemDetailContainer = ({match}) => {
 
     const [ item, setItem ] = useState([]);
 
-    let objFiltro = useParams();
-    let filtro = parseInt(objFiltro.id) || 0;
+   let idProd = match.params.id;
 
     useEffect(() => {
-        const respuesta = new Promise( (resolve) => {
-            setTimeout (()=>{
-                axios('https://tecnogame-1101-default-rtdb.firebaseio.com/productos.json').then(({data}) => resolve(data));
-            },2000);
-        })
+        
+        const requestData = async () => {
+            const docRef = doc(db, 'productos', idProd);
+            const docSnap = await getDoc(docRef);
 
-        respuesta.then((response) => {
-            const itemSelected = response.filter(p => p.id === filtro)
-            setItem(itemSelected);
-        });
-    }, []);
+            if (docSnap.exists()) {
+                const item = docSnap.data();
+                const id = docSnap.id;
+
+                setItem({...item, id});
+            }
+        } 
+        requestData();
+
+    }, [idProd])
     
     return (
         <section className="itemDetailContainer">
@@ -32,7 +35,7 @@ const ItemDetailContainer = () => {
             
             <Divider horizontal><Icon disabled name='cart plus'/></Divider>
 
-            <ItemDetail item={item[0]}/>
+            <ItemDetail item={item}/>
         </section>
     )
 };
