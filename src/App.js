@@ -9,6 +9,7 @@ import ItemList from './components/itemListContainer/ItemList/ItemList';
 import ItemDetailContainer from './components/Details/ItemDetailContainer';
 import CartContainer from './components/CartContainer/CartContainer';
 import CartProvider from "./components/Context/CartContext";
+import FormularioCompra from "./utils/form";
 
 function App() {
     return (
@@ -22,6 +23,7 @@ function App() {
                         <Route component={ ItemList } path="/categorias/:categoriaId" />
                         <Route component={ ItemDetailContainer } path="/detalle/:id" />
                         <Route component={ CartContainer } path="/carrito" />
+                        <Route  component={ FormularioCompra } path="/confirmarCompra" />
                     </Switch>
                 </CartProvider>
             </Router>
