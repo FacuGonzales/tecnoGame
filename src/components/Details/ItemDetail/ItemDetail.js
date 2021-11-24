@@ -1,9 +1,11 @@
 import { useState, useContext } from 'react';
-import { Item, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+
+import { Item, Button } from 'semantic-ui-react'
+
 import { CartContext } from '../../Context/CartContext';
-import ItemCount from '../../itemListContainer/ItemCount/ItemCount';
-import LoadingComponent from '../../LoadingContainer/LoadingComponent';
+import LoadingComponent from '../../../utils/LoadingComponent';
+import ItemCount from '../../ItemListContainer/ItemCount/ItemCount';
 
 
 const ItemDetail = ({item}) => {

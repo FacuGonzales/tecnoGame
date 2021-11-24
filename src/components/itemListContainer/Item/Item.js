@@ -4,7 +4,7 @@ import { Card, Button, Image, Icon } from 'semantic-ui-react';
 import { CartContext } from '../../Context/CartContext';
 
 const Item = ({item}) => {
-    const {id, nombre, url_image, precio} = item;
+    const {id, nombre, url_image, precio, oferta, precio_oferta} = item;
 
     const { addItem }  = useContext(CartContext);
 
@@ -22,9 +22,17 @@ const Item = ({item}) => {
                         {nombre}
                     </Card.Description>
 
-                    <Card.Description className="itemListContainer--itemList__contenedorListado__card--contentNombre">
-                        $ {precio}
-                    </Card.Description>
+                    {oferta ? 
+                        <Card.Description className="itemListContainer--itemList__contenedorListado__card--contentNombre">
+                            <span className="itemListContainer--itemList__contenedorListado__card--contentNombre__precioOferta">USD {precio_oferta} </span> 
+                            <span className="itemListContainer--itemList__contenedorListado__card--contentNombre__precioAnterior">USD {precio}</span> 
+                        </Card.Description>
+                        :
+                        <Card.Description className="itemListContainer--itemList__contenedorListado__card--contentNombre">
+                            USD {precio}
+                        </Card.Description>
+                    }
+                   
 
                     <Card.Description className="itemListContainer--itemList__contenedorListado__card--contentPrecio">
                         <Button.Group>

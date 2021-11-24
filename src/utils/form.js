@@ -1,9 +1,12 @@
 import React, { useState, useContext } from 'react';
 import { collection, addDoc } from "firebase/firestore"
-import { db } from "./db"
-import { CartContext } from '../components/Context/CartContext';
+import { db } from "./DataBase"
+import { Button, Icon } from 'semantic-ui-react';
 
-const FormularioCompra = () => {
+import { CartContext } from '../components/Context/CartContext';
+import { Link } from 'react-router-dom';
+
+const Form = () => {
     const { items, totalPrice } = useContext(CartContext);
 
     const [ inputName, setInputName ] = useState("");
@@ -33,30 +36,46 @@ const FormularioCompra = () => {
     };
 
     return (
-        <div>
-            <form >
-                <div>
-                    <p>Nombre</p>
-                    <input type="text" onChange={ onChangeName } /> 
+        <div className="formContainer">
+            <h1 className="formContainer--title">Completá con los datos del comprador</h1>
+
+            <form className="ui fluid form formContainer--formulario">
+                <div className="field formContainer--formulario__inputContainer">
+                    <input className="field formContainer--formulario__inputContainer--input" type="text" placeholder="First name" onChange={ onChangeName }/>
+                    
+                    <div className="ui pointing label">
+                        Ingrese su NOMBRE y APELLIDO
+                    </div>
                 </div>
 
-                <div>
-                    <p>Telefono</p>
-                    <input type="number" name="" id="" onChange={ onChangePhone }/>
+                <div className="field formContainer--formulario__inputContainer">
+                    <input className="field formContainer--formulario__inputContainer--input" type="text" placeholder="First name" onChange={ onChangePhone }/>
+                    
+                    <div className="ui pointing label">
+                        Ingrese su TELEFONO 
+                    </div>
                 </div>
 
-                <div>
-                    <p>Email</p>
-                    <input type="email" name="" id="" onChange={ onChangeEmail }/>
+                <div className="field formContainer--formulario__inputContainer--input">
+                    <input className="field formContainer--formulario__inputContainer--input" type="text" placeholder="First name" onChange={ onChangeEmail }/>
+                    
+                    <div className="ui pointing label">
+                        Ingrese su CORREO 
+                    </div>
                 </div>
 
-                <div>
-                    <input type="button" value="Confirmar" onClick={ success } />
-                    <input type="button" value="Cancelar" />
-                </div>
+                <Button.Group className="field formContainer--formulario__buttonContainer">
+                    <Button positive onClick={ success }><Icon name='check' />Confirmar</Button>
+
+                    <Button.Or />
+                    <Link to="/">
+                        <Button><Icon name='close'/>Cancelar</Button>
+                    </Link>
+                </Button.Group>
             </form>
+
         </div>
     )
 }
 
-export default FormularioCompra;
+export default Form;

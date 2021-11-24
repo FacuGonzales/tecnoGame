@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Icon, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom'
+
+import { Icon, Button } from 'semantic-ui-react';
 
 function ItemCount({stock, initial, onClick}){
 
@@ -31,6 +32,7 @@ function ItemCount({stock, initial, onClick}){
                           onClick={masCantidad}/>
                 </div>
             </div>
+            
             <div className="contadorContainer--botonesExtra">
                 <Button.Group className="contadorContainer--botonesExtra__contenedorBotones">
                     <Link to="/">

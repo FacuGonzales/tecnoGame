@@ -1,0 +1,38 @@
+@import './mxin/mixin.scss';
+
+.cotizacionContainer{
+  background-color: rgba(0, 141, 0, 0.493);
+  margin: 0px auto;
+  padding: 15px 0px;
+  text-align: center;
+  width: 100%;
+
+  &--title{
+    @include font-group(GillSansBold, 1.3rem, bold, #fff);
+    text-transform: uppercase;
+  }
+
+  &--form{
+    @include display-flex(center, flex, center);
+
+    &__inputUsd, &__signoIgual, &__inputPesos{
+      padding: 0px 10px;
+    }
+  }
+}
+
+
+// 1024, 768, 580
+
+@media (max-width: 580px) {
+  .cotizacionContainer{
+
+    &--title{
+      font-size: 1.1rem;
+    }
+    
+    &--form{
+      display: block;
+    }
+  }
+}

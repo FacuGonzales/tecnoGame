@@ -1,44 +1,130 @@
-.header {
-  background-color: #4183c4;
-  color: #fff;
+@import './_fonts.scss';
+@import './mxin/mixin.scss';
 
-  margin: 0px auto;
-
+.divHeader{
+  position:fixed;
+  top:0;
   width: 100%;
+  z-index:1000;
 
-  &--title {
-    color: #fff;
-    font-size: 4rem;
-    padding: 20px 0px;
-    text-align: center;
-  }
-
-  &--navegacion {
-    display: flex;
-    justify-content: center;
-    font-size: 1.3rem;
+  &--navbar{
+    @include display-flex(center, flex, space-between);
+    @include font-group(GillSansBold, 1.3rem, '', #fff);
+    background-color: #ff5900;
+    margin: 0px auto;
     padding: 10px 0px;
-    width: 100%;
-
+  
+    &__logo {
+      width: 20%;
+  
+      &--img{
+        margin: 0px 35px;
+        width: 100%;
+      }
+    }
+  
     &__lista {
-      display: flex;
+      @include display-flex(center, flex, center);
       list-style-type: none;
       margin: 0;
       overflow: hidden;
       padding: 0;
-
+  
       &--opciones {
         color: #fff;
         cursor: pointer;
         float: left;
-        padding: 0px 40px;
         margin: 12px;
+        padding: 0px 10px;
       }
-
+  
       &--cart {
         color: #fff;
         margin: 12px;
       }
     }
   }
+
+  &--message{
+    margin: 150px 40px;
+  }
+}
+
+// 1024, 768, 580
+@media (max-width: 1024px) {
+  .divHeader{
+    &--navbar{
+      font-size: 1.2rem;
+
+      &__lista {
+        &--opciones {
+          margin: 16px;
+          padding: 0px;
+        }
+      }
+    } 
+
+    &--message{
+      margin: 150px 35px;
+    }
+  }  
+}
+
+@media (max-width: 768px) {
+  .divHeader{
+    &--navbar{
+      font-size: 1rem;
+
+      &__logo {
+        width: 25%;
+
+        &--img{
+          margin: 0px 15px;
+        }
+      }
+
+      &__lista {
+        &--opciones {
+          margin: 10px;
+        }
+
+        &--cart {
+          margin: 4px;
+        }
+      }
+    } 
+
+    &--message{
+      margin: 150px 10px;
+    }
+  }  
+}
+
+@media (max-width: 580px) {
+  .divHeader{
+    &--navbar{
+      font-size: .6rem;
+
+      &__logo {
+        &--img{
+          margin: 0px 5px;
+        }
+      }
+
+      &__lista {
+        padding: 10px;
+        &--opciones {
+          margin: 5px;
+        }
+
+        &--cart {
+          margin: -16px 0px;
+        }
+      }
+    } 
+
+    &--message{
+      margin: 150px 5px;
+    }
+  }  
 }

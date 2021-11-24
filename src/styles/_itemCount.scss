@@ -1,37 +1,69 @@
-p {
-  font-size: 20px !important;
-  margin: 15px 0px !important;
-  text-align: center;
-}
+@import './mxin/mixin.scss';
 
 .contadorContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.contadorContainer {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
+  @include display-flex(center, flex, space-between);
   padding: 0px 30px;
 
   &--infoContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include display-flex(center, flex, center);
 
     &__stockContainer {
       padding-right: 50px;
+
+      &--valor{
+        font-size: 20px !important;
+        margin: 15px 0px !important;
+        text-align: center;
+      }
     }
 
     &__botonAgregarRestar {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @include display-flex(center, flex, center);
 
       &--botonIcon {
         font-size: 1.5rem !important;
+      }
+
+      &--valorInicial{
+        font-size: 20px !important;
+        margin: 15px 0px !important;
+        text-align: center;
+      }
+    }
+  }
+}
+
+// 1024, 768, 580
+@media (max-width: 1024px) {
+  .contadorContainer {
+    display: block;
+    padding: 0px;
+
+    &--botonesExtra{
+      @include display-flex(center, flex, center);
+
+    }
+  }
+}
+
+@media (max-width: 580px) {
+  .contadorContainer {
+    &--infoContainer{
+
+      &__stockContainer {
+        &--valor{
+          font-size: 15px !important;
+        }
+      }
+
+      &__botonAgregarRestar {
+        &--botonIcon {
+          font-size: 1.2rem !important;
+        }
+  
+        &--valorInicial{
+          font-size: 15px !important;
+        }
       }
     }
   }

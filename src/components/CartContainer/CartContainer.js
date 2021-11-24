@@ -27,7 +27,7 @@ const CartContainer = () => {
                 :
                 
                 <div className="cartContainer--comprasContainer">
-                    <CartItem/>
+                    <CartItem className="cartContainer--comprasContainer__itemContainer"/>
 
                     <div className="cartContainer--comprasContainer__infoTotal">
                         <p className="cartContainer--comprasContainer__infoTotal--totalPrice">TOTAL: USD { totalPrice() } | </p>
@@ -35,26 +35,30 @@ const CartContainer = () => {
                         <p className="cartContainer--comprasContainer__infoTotal--totalItems"> x { totalItems() } Unidades</p>
                     </div>
                     
-                    <Button.Group className="cartContainer--comprasContainer__buttonsContainer">
-                        <Button onClick={ () => clear() } className="cartContainer--comprasContainer__buttonsContainer--vaciarButton">
-                            <Icon name='delete' className="cartContainer--comprasContainer__buttonsContainer--vaciarButton__icon"/>Vacíar Carrito
-                        </Button>
+                    <div className="cartContainer--comprasContainer__buttonsContainer">
 
-                        <Button.Or />
-
-                        <Link to="/">
-                            <Button positive className="cartContainer--comprasContainer__buttonsContainer--continuarButton">
-                                <Icon name='shop'className="cartContainer--comprasContainer__buttonsContainer--continuarButton__icon"/>Continuar Comprando
+                        <Button.Group className="cartContainer--comprasContainer__buttonsContainer--buttonsContinuarVaciar">
+                            <Button onClick={ () => clear() } className="cartContainer--comprasContainer__buttonsContainer--vaciarButton">
+                                <Icon name='delete' className="cartContainer--comprasContainer__buttonsContainer--vaciarButton__icon"/>Vacíar Carrito
                             </Button>
-                        </Link>
-                    </Button.Group>
 
+                            <Button.Or />
 
-                    <div className="cartContainer--comprasContainer__buttonFormContainer">
-                        <Link to="/confirmarCompra">
-                            <Button positive className="cartContainer--comprasContainer__buttonFormContainer--formButton">Confirmar Compra</Button>
-                        </Link>
+                            <Link to="/">
+                                <Button positive className="cartContainer--comprasContainer__buttonsContainer--continuarButton">
+                                    <Icon name='shop'className="cartContainer--comprasContainer__buttonsContainer--continuarButton__icon"/>Continuar Comprando
+                                </Button>
+                            </Link>
+                        </Button.Group>
+
+                        <div className="cartContainer--comprasContainer__buttonsContainer--buttonFormContainer">
+                            <Link to="/confirmarCompra">
+                                <Button positive className="cartContainer--comprasContainer__buttonFormContainer--formButton">Confirmar Compra</Button>
+                            </Link>
+                        </div>
                     </div>
+
+
                     
                 </div>
             }

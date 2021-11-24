@@ -3,8 +3,6 @@ import { Divider, Icon} from 'semantic-ui-react'
 
 import ItemList from './ItemList/ItemList';
 
-
-
 const ItemListContainer = () => {
 
     return (

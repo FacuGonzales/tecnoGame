@@ -1,0 +1,250 @@
+@import './mxin/mixin.scss';
+
+.cartContainer {
+    margin: 80px auto !important;
+    width: 80%;
+  
+    &--titleList {
+        @include font-group(GillSansBold, 2.5rem, bold, rgb(0, 48, 90));
+        padding: 15px;
+        text-align: center;
+        text-transform: uppercase !important;
+    }
+  
+    &--sinComprasContainer {
+
+        &__titleSinCompras{
+            @include font-group(arial, 1.5rem, bold, #ccc);
+            padding: 50px 0px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        &__button{
+            display: flex !important;
+            margin: 0px auto !important;
+        }
+        
+    }
+  
+    &--comprasContainer {
+
+        &__itemContainer{
+
+            &--carItemList{
+                margin: 0px auto !important;
+                width: 100%;
+
+                &__item {
+                    @include display-flex(center, flex !important, center);
+                
+                    // contenedor de avatar y nombre/precio
+                    &--infoContainer {
+                        @include display-flex(center, flex, '');
+                        width: 75%;
+                
+                        &__avatarContainer {
+                            &__avatar {
+                                width: 10em !important;
+                                height: 10em !important;
+                                
+                                &--img {
+                                    width: 100% !important;
+                                    height: 100% !important;
+                                }
+                            }
+                        }
+                
+                        &__datos {
+                            padding: 0px 20px;
+                        }
+                    }
+                
+                    // contenedor de button
+                    &--buttonContainer {
+                        @include display-flex(center, flex, center);
+                        width: 25%;
+                        float: right;
+                      
+                        &__precioContainer {
+                            @include font-group(arial, 1rem, bold, green);
+                            margin: 0px !important;
+                        }
+                
+                        &__cantidadContainer {
+                            @include font-group(arial, 1rem, bold, #000);
+                            margin: 0px !important;
+                            padding: 0px 10px;
+                        }
+                    }
+                }
+            }
+        }
+
+
+        &__infoTotal {
+            @include display-flex(center, flex, end);
+
+  
+            &--totalPrice {
+                @include font-group(arial, 1.5rem, bold, green);
+                margin: 0px !important;
+            }
+  
+            &--totalItems {
+                padding: 0px 5px;
+            }
+        }
+  
+        &__buttonsContainer {
+            @include display-flex(center, flex, space-between);
+            padding: 20px 0px;
+        }
+    }
+}
+  
+
+// 1024, 768, 580
+@media (max-width: 1024px) {
+    .cartContainer {
+        margin: 70px auto !important;
+
+        &--comprasContainer {
+            &__itemContainer{
+                &--carItemList{
+                    // contiene cada item en el carrito
+                    &__item {
+                        // contenedor de avatar y nombre/precio
+                        &--infoContainer {
+                            width: 65% !important;
+                            &__avatarContainer {
+                                &__avatar {
+                                    width: 8em !important;
+                                    height: 8em !important;
+                                }
+                            }
+                    
+                            &__datos {
+                                &--tituloProd{
+                                    font-size: 1.5rem !important;
+                                }
+                            }
+                        }
+                    
+                        // contenedor de button eliminar prod y cantidad en el carrito
+                        &--buttonContainer {
+                            width: 35% !important;
+                        }
+                      }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .cartContainer {
+        &--sinComprasContainer {
+    
+            &__titleSinCompras{
+                font-size: 1.2rem;
+            }
+        }
+
+        &--comprasContainer {
+            &__itemContainer{
+                &--carItemList{
+                    // contiene cada item en el carrito
+                    &__item {
+                        // contenedor de avatar y nombre/precio
+                        &--infoContainer {
+                            width: 50% !important;
+                            &__avatarContainer {
+                                &__avatar {
+                                    width: 5em !important;
+                                    height: 5em !important;
+                                }
+                            }
+                    
+                            &__datos {
+                                &--tituloProd{
+                                    font-size: 1rem !important;
+                                }
+                            }
+                        }
+                    
+                        // contenedor de button eliminar prod y cantidad en el carrito
+                        &--buttonContainer {
+                            width: 50% !important;
+                        }
+                      }
+                }
+            }
+        }
+    }
+  
+}
+
+@media (max-width: 580px) {
+    .cartContainer {
+        &--titleList{
+            font-size: 1.5rem;
+        }
+        &--sinComprasContainer {
+    
+            &__titleSinCompras{
+                font-size: .8rem;
+            }
+        }
+
+        &--comprasContainer {
+            &__itemContainer{
+                &--carItemList{
+                    // contiene cada item en el carrito
+                    &__item {
+                        display: block !important;
+                        // contenedor de avatar y nombre/precio
+                        &--infoContainer {
+                            @include display-flex(center, flex, center);
+                            width: 100% !important;
+
+                            &__datos {
+                                &--tituloProd{
+                                    font-size: 1rem !important;
+                                }
+                            }
+                        }
+                    
+                        // contenedor de button eliminar prod y cantidad en el carrito
+                        &--buttonContainer {
+                            @include display-flex(center, flex, center);
+                            width: 100% !important;
+                            &__precioContainer, &__cantidadContainer, &__button{
+                                font-size: 1rem;
+                            }
+                        }
+                      }
+                }
+            }
+
+            &__infoTotal {
+                justify-content: center;
+    
+                &--totalPrice {
+                    font-size: 1rem;
+                }
+            }
+      
+            &__buttonsContainer {
+                @include display-flex(center, flex, space-between);
+                padding: 20px 0px;
+            }
+        }
+    }
+
+    .ui .button .ui.button, .ui.buttons .button, .ui.buttons .or {
+        font-size: 0.5rem;
+        margin: 0px !important;
+    }
+  
+}

@@ -3,10 +3,10 @@ import { useState, useEffect } from 'react';
 import { useParams} from 'react-router-dom';
 import { Divider, Icon} from 'semantic-ui-react'
 import { collection, getDocs, query, where} from "firebase/firestore";
-import { db } from "../../../utils/db"
+import { db } from "../../../utils/DataBase"
 //router
 import Item from '../Item/Item.js';
-import LoadingComponent from '../../LoadingContainer/LoadingComponent';
+import LoadingComponent from '../../../utils/LoadingComponent';
 
 const ItemList = () => {
     const [ prodList, setProdList ] = useState([]);
@@ -86,8 +86,8 @@ const ItemList = () => {
                     <div className="itemListContainer--itemList">
                         <div className="itemListContainer--itemList__contenedorListado">
                             {
-                                prodList.map(p=>{
-                                    return(<Item item={p}/>)
+                                prodList.map(p=>{ 
+                                    if(p.oferta) return(<Item item={p}/>)
                                 })
                             }
                         </div>

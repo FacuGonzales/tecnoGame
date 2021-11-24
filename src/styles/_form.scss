@@ -1,0 +1,46 @@
+
+
+.formContainer{
+    margin: 80px auto !important;
+    width: 80%;
+
+    &--title{
+        @include font-group(GillSansBold, 2rem, bold, rgb(0, 48, 90));
+        padding: 15px;
+        text-align: center;
+        text-transform: uppercase !important;
+    }
+
+    &--formulario{
+        &__buttonContainer{
+           float: right;
+        }
+    }
+}
+
+// 1024, 768, 580
+@media (max-width: 1024px) {
+    .formContainer{
+        margin: 70px auto !important;
+    
+        &--title{
+            font-size: 1.5rem;
+        }
+    }
+}
+  
+@media (max-width: 768px) {
+    .formContainer{
+        &--title{
+            font-size: 1rem;
+        }
+    }
+}
+
+@media (max-width: 580px) {
+    .formContainer{
+        &--title{
+            font-size: .8rem;
+        }
+    }
+}

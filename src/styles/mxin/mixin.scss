@@ -1,0 +1,21 @@
+@mixin display-grid($align, $display, $columns, $rows, $justifyContent) {
+  align-items: $align;
+  display: $display;
+  grid-template-columns: $columns;
+  grid-template-rows: $rows;
+  justify-content: $justifyContent;
+}
+
+@mixin display-flex($align, $display, $justifyContent) {
+  align-items: $align;
+  display: $display;
+  justify-content: $justifyContent;
+}
+
+
+@mixin font-group($fontFamily, $fontSize, $fontWeight, $color) {
+    font-family: $fontFamily;
+    font-size: $fontSize;
+    font-weight: $fontWeight;
+    color: $color
+}

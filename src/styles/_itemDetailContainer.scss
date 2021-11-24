@@ -1,20 +1,18 @@
+@import './mxin/mixin.scss';
+
 .itemDetailContainer {
-  margin: 0px auto;
+  margin: 100px auto;
   width: 80%;
 
   &__title {
-    color: rgb(0, 48, 90);
-    font-size: 2.5rem;
-    font-weight: bold;
+    @include font-group(GillSansBold, 2.5rem, bold, rgb(0, 48, 90));
     padding: 15px;
     text-align: center;
     text-transform: uppercase !important;
   }
 
   &__itemDetail {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    @include display-flex(flex-start, flex, center);
 
     &--image {
       width: 50%;
@@ -26,26 +24,103 @@
 
     &--contentInfo {
       &__titulo {
+        @include font-group(arial, 2rem, bold, #4183c4);
         background-color: #d5d4d4;
-        color: #4183c4;
-        font-size: 2rem;
-        font-weight: bold;
         padding: 50px 10px;
       }
 
       &__precio {
+        @include font-group(arial, 1.2rem, bold, #8b98a5);
         background-color: #f1f1f1;
         padding: 25px 10px;
-        color: #4183c4;
-        font-size: 1.2rem;
-        font-weight: bold;
       }
 
       &__descripcion {
+        @include font-group(arial, 1.2rem, '', #000);
         background-color: #fbfbfb;
         padding: 40px 27px;
-        color: #000000;
-        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+
+// 1024, 768, 580
+@media (max-width: 1024px) {
+  .itemDetailContainer {
+    margin: 80px auto;
+    width: 90%;
+
+    &__itemDetail {
+
+
+      &--contentInfo {
+        &__titulo {
+          padding: 35px 10px;
+        }
+  
+        &__precio {
+          padding: 15px 10px;
+        }
+  
+        &__descripcion {
+          padding: 20px 10px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .itemDetailContainer {
+
+    &__title{
+      font-size: 1.5rem;
+    }
+
+    &__itemDetail {
+      display: block;
+
+      
+      &--image {
+        margin: 0px auto;
+        width: 70%;
+
+        img{
+          width: 100%;
+        }
+
+      }
+
+      &--contentInfo {
+        &__titulo {
+          padding: 35px 10px;
+        }
+  
+        &__precio {
+          padding: 15px 10px;
+        }
+  
+        &__descripcion {
+          padding: 20px 10px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 580px) {
+  .itemDetailContainer {
+    &__itemDetail {
+      &--image {
+        margin: 0px auto;
+        width: 100%;
+      }
+
+      &--contentInfo {
+        &__descripcion {
+              font-size: .8rem;
+        }
       }
     }
   }

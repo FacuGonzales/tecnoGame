@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Divider, Icon} from 'semantic-ui-react'
 import { getDoc,doc } from "firebase/firestore";
-import { db } from "../../utils/db"
+import { db } from "../../utils/DataBase"
 
 import ItemDetail from './ItemDetail/ItemDetail';
 
