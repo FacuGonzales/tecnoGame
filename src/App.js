@@ -14,7 +14,6 @@ import ItemList from './components/ItemListContainer/ItemList/ItemList';
 import ItemDetailContainer from './components/Details/ItemDetailContainer';
 import CartContainer from './components/CartContainer/CartContainer';
 import CartProvider from "./components/Context/CartContext";
-import MessageContainer from "./utils/MessageContainer";
 
 function App() {
   return (

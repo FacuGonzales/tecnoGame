@@ -7,7 +7,6 @@ import { CartContext } from '../../Context/CartContext';
 import LoadingComponent from '../../../utils/LoadingComponent';
 import ItemCount from '../../ItemListContainer/ItemCount/ItemCount';
 
-
 const ItemDetail = ({item}) => {
     const [ confirmar, setConfirmar ] = useState(false);
     const { addItem }  = useContext(CartContext);
