@@ -9,8 +9,8 @@ import NavBar from './utils/NavBar';
 import FormularioCompra from "./utils/Formulario";
 
 // Components
-import ItemListContainer from './components/ItemListContainer/ItemListContainer';
-import ItemList from './components/ItemListContainer/ItemList/ItemList';
+import ItemListContainer from './components/_ItemListContainer/ItemListContainer';
+import ItemList from './components/_ItemListContainer/ItemList/ItemList';
 import ItemDetailContainer from './components/Details/ItemDetailContainer';
 import CartContainer from './components/CartContainer/CartContainer';
 import CartProvider from "./components/Context/CartContext";
