@@ -1,7 +1,7 @@
-@import './mxin/mixin.scss';
+@import "./mxin/mixin.scss";
 
 .itemListContainer {
-  margin: 100px auto;
+  margin: 145px auto;
   padding: 20px 0px;
   width: 85%;
 
@@ -14,7 +14,7 @@
 
   &--itemList {
     &__contenedorListado {
-      @include display-grid(baseline, grid, 30% 30% 30%, 600px 600px, center);
+      @include display-grid(baseline, grid, 30% 30% 30%, 700px 700px, center);
 
       &__card {
         width: 85% !important;
@@ -28,20 +28,20 @@
           @include font-group(Arial, 1.2rem, bold, #000);
           margin: 10px 0px;
 
-          &__precioAnterior{
-            @include font-group(Arial, 1rem, '', rgb(177, 9, 9));
-            text-decoration:line-through;
+          &__precioAnterior {
+            @include font-group(Arial, 1rem, "", rgb(177, 9, 9));
+            text-decoration: line-through;
             padding: 0px 10px;
           }
 
-          &__precioOferta{
-            @include font-group(Arial, '', bold, rgb(56, 156, 25));
+          &__precioOferta {
+            @include font-group(Arial, "", bold, rgb(56, 156, 25));
             padding: 0px 10px;
           }
         }
 
         &--contentPrecio {
-          @include font-group(Arial, 1.2rem, bold, '');
+          @include font-group(Arial, 1.2rem, bold, "");
           margin: 10px 0px;
         }
       }
@@ -58,25 +58,24 @@
 
     &--itemList {
       &__contenedorListado {
-       
         grid-template-rows: 440px 440px;
 
-        &__card{
+        &__card {
           &--contentNombre {
             font-size: 1rem;
-  
-            &__precioAnterior, &__precioOferta{
+
+            &__precioAnterior,
+            &__precioOferta {
               padding: 0px;
             }
           }
-  
+
           &--contentPrecio {
             font-size: 1rem;
           }
         }
       }
     }
-
   }
 }
 
@@ -88,13 +87,11 @@
         grid-template-rows: 435px 435px;
       }
     }
-
   }
 }
 
 @media (max-width: 580px) {
   .itemListContainer {
-
     &--titleList {
       font-size: 1.5rem;
       padding: 0px;
@@ -105,12 +102,11 @@
         grid-template-columns: 80%;
         grid-template-rows: 525px 525px;
 
-        &__card{
+        &__card {
           width: 100% !important;
         }
       }
     }
-
   }
 }
 
@@ -119,9 +115,7 @@
     &--itemList {
       &__contenedorListado {
         grid-template-rows: 430px 445px;
-
       }
     }
-
   }
 }

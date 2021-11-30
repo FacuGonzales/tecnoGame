@@ -1,7 +1,7 @@
-@import './mxin/mixin.scss';
+@import "./mxin/mixin.scss";
 
 .itemDetailContainer {
-  margin: 100px auto;
+  margin: 145px auto;
   width: 80%;
 
   &__title {
@@ -36,14 +36,13 @@
       }
 
       &__descripcion {
-        @include font-group(arial, 1.2rem, '', #000);
+        @include font-group(arial, 1.2rem, "", #000);
         background-color: #fbfbfb;
         padding: 40px 27px;
       }
     }
   }
 }
-
 
 // 1024, 768, 580
 @media (max-width: 1024px) {
@@ -52,17 +51,15 @@
     width: 90%;
 
     &__itemDetail {
-
-
       &--contentInfo {
         &__titulo {
           padding: 35px 10px;
         }
-  
+
         &__precio {
           padding: 15px 10px;
         }
-  
+
         &__descripcion {
           padding: 20px 10px;
         }
@@ -73,34 +70,31 @@
 
 @media (max-width: 768px) {
   .itemDetailContainer {
-
-    &__title{
+    &__title {
       font-size: 1.5rem;
     }
 
     &__itemDetail {
       display: block;
 
-      
       &--image {
         margin: 0px auto;
         width: 70%;
 
-        img{
+        img {
           width: 100%;
         }
-
       }
 
       &--contentInfo {
         &__titulo {
           padding: 35px 10px;
         }
-  
+
         &__precio {
           padding: 15px 10px;
         }
-  
+
         &__descripcion {
           padding: 20px 10px;
         }
@@ -119,7 +113,7 @@
 
       &--contentInfo {
         &__descripcion {
-              font-size: .8rem;
+          font-size: 0.8rem;
         }
       }
     }
