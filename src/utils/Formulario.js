@@ -6,7 +6,7 @@ import { Button, Icon } from 'semantic-ui-react';
 import { CartContext } from '../components/Context/CartContext';
 import { Link } from 'react-router-dom';
 
-const Form = () => {
+const Formulario = () => {
     const { items, totalPrice } = useContext(CartContext);
 
     const [ inputName, setInputName ] = useState("");
@@ -78,4 +78,4 @@ const Form = () => {
     )
 }
 
-export default Form;
+export default Formulario;
