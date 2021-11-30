@@ -6,7 +6,7 @@ import { BrowserRouter as Router,Route,Switch } from 'react-router-dom';
 
 // Utils
 import NavBar from './utils/NavBar';
-import FormularioCompra from "./utils/Form";
+import FormularioCompra from "./utils/Formulario";
 
 // Components
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
