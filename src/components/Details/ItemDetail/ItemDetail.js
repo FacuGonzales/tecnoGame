@@ -5,7 +5,7 @@ import { Item, Button } from 'semantic-ui-react'
 
 import { CartContext } from '../../Context/CartContext';
 import LoadingComponent from '../../../utils/LoadingComponent';
-import ItemCount from '../../ItemListContainer/ItemCount/ItemCount';
+import ItemCount from '../../_ItemListContainer/ItemCount/ItemCount';
 
 const ItemDetail = ({item}) => {
     const [ confirmar, setConfirmar ] = useState(false);
